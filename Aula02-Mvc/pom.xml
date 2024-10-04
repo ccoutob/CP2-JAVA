@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.fiap</groupId>
-	<artifactId>Aula02-Mvc</artifactId>
+	<artifactId>CP2-Mvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Aula02-Mvc</name>
 	<description>Exemplo de Spring MVC</description>

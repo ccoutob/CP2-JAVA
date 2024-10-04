@@ -12,15 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CalculadoraFaltasController {
 
     @GetMapping("porcentagem")
-    public String calcular(){
-        return "calculadora/porcentagem";
+    public String calcular() {
+        return "calculadora/porcentagem"; // Carrega o template correto
     }
 
-    @PostMapping("media")
-    public String calcular(Faltas faltas, Model model){
-        model.addAttribute("porcentagemMedia", faltas.calcularMediaFaltas());
-        model.addAttribute("fal", faltas);
-        return "calculadora/porcentagem";
+    @PostMapping("porcentagem")
+    public String calcular(Faltas faltas, Model model) {
+        System.out.println("Calculando porcentagem com faltas: " + faltas.getFaltas());
+        double porcentagemMedia = faltas.calcularMediaFaltas();
+        model.addAttribute("porcentagemMedia", porcentagemMedia);
+        model.addAttribute("fal", faltas); // Para acessar as faltas
+        return "calculadora/porcentagem"; // Retorna para o mesmo template
     }
-
 }
+
+

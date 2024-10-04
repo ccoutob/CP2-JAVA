@@ -19,40 +19,15 @@ public class AlunoController {
     private AlunoRepository alunoRepository;
 
     @GetMapping("cadastrar")
-    public String cadastrar(){
+    public String cadastrar(Aluno aluno){
         return "aluno/cadastro";
     }
-
-    @GetMapping("editar/{id}")
-    public String editar(@PathVariable("id") Long id, Model model){
-        //Pesquisar o aluno pelo id e enviar o aluno para a view
-        model.addAttribute("aluno", alunoRepository.findById(id));
-        //Retornar a view
-        return "aluno/editar";
-    }
-
-    @GetMapping("listar") //localhost:8080/aluno/listar
-    public String listar(Model model){
-        //Enviar a lista de livros para a view
-        model.addAttribute("alunos", alunoRepository.findAll());
-        return "aluno/lista";
-    }
-
-    @PostMapping("editar")
-    @Transactional
-    public String editar(Aluno aluno, Model model){
-        alunoRepository.save(aluno);
-        model.addAttribute("msg", "Aluno atualizado");
-        model.addAttribute("alunos", alunoRepository.findAll());
-        return "aluno/lista";
-    }
-
     @PostMapping("cadastrar")
     @Transactional
     public String cadastrar(Aluno aluno, Model model){
         alunoRepository.save(aluno);
-        model.addAttribute("msg", "Aluno registrado!");
-        return "Aluno/cadastro";
+        model.addAttribute("msg", "Aluno cadastrado!");
+        return "aluno/cadastro";
     }
 
 }

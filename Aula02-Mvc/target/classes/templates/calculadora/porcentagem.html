@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<h1>Calculadora de Faltas - FIAP</h1>
+<p th:if="${porcentagemMedia != null}">
+    A média final é: <span th:text="${porcentagemMedia}"></span><br>
+    <span th:text="${porcentagemMedia > 75 ? 'Passou de ano!' : 'Tente novamente..'}"></span><br>
+    Média Faltas 1º Semestre: <span th:text="${fal.faltas}"></span><br>
+    Média Faltas 2º Semestre: <span th:text="${fal.faltas}"></span><br>
+</p>
+
+<form method="post" action="@{/calculadora/porcentagem}">
+    <div>
+        <label>Média 1º Semestre</label>
+        <input type="number" name="faltas" required>
+    </div>
+    <button type="submit">Calcular</button>
+</form>
+</body>
+</html>
