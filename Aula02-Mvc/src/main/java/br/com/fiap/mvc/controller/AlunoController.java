@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("aluno")
@@ -40,19 +41,26 @@ public class AlunoController {
 
     @PostMapping("editar")
     @Transactional
-    public String editar(Aluno aluno, Model model){
+    public String editar(Aluno aluno, RedirectAttributes redirectAttributes){
         alunoRepository.save(aluno);
-        model.addAttribute("msg", "Aluno atualizado");
-        model.addAttribute("status", alunoRepository.findAll());
-        return "aluno/lista";
+        redirectAttributes.addFlashAttribute("msg", "Aluno atualizado");
+        return "redirect:/aluno/listar";
     }
 
     @PostMapping("cadastrar")
     @Transactional
-    public String cadastrar(Aluno aluno, Model model){
+    public String cadastrar(Aluno aluno, RedirectAttributes redirectAttributes){
         alunoRepository.save(aluno);
-        model.addAttribute("msg", "Aluno cadastrado!");
-        return "aluno/cadastro";
+        redirectAttributes.addFlashAttribute("msg", "Livro registrado!");
+        return "redirect:/aluno/cadastrar";
+    }
+
+    @PostMapping("excluir")
+    @Transactional
+    public String remover(Long idStatus, RedirectAttributes redirectAttributes){
+        alunoRepository.deleteById(idStatus);
+        redirectAttributes.addFlashAttribute("msg", "Aluno removido!");
+        return "redirect:/aluno/listar";
     }
 
 }
