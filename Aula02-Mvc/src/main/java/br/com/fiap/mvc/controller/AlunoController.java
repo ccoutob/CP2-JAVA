@@ -51,7 +51,7 @@ public class AlunoController {
     @Transactional
     public String cadastrar(Aluno aluno, RedirectAttributes redirectAttributes){
         alunoRepository.save(aluno);
-        redirectAttributes.addFlashAttribute("msg", "Livro registrado!");
+        redirectAttributes.addFlashAttribute("msg", "Aluno registrado!");
         return "redirect:/aluno/cadastrar";
     }
 
