@@ -22,7 +22,7 @@ public class CalculadoraFaltasController {
         double porcentagemMedia = faltas.calcularMediaFaltas();
         model.addAttribute("porcentagemMedia", porcentagemMedia);
         model.addAttribute("fal", faltas); // Para acessar as faltas
-        return "/porcentagem"; // Retorna para o mesmo template
+        return "calculadora/porcentagem"; // Retorna para o mesmo template
     }
 }
 
